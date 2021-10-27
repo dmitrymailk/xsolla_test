@@ -1,0 +1,97 @@
+html, body, #app
+  height: 100%
+  width: 100%
+  max-height: 100%
+  max-width: 100%
+  margin: 0
+  padding: 0
+  display: flex
+  flex-direction: column
+
+@font-face
+  font-family: Avenir
+  src: url('./fonts/AvenirLTStd-Book.otf')
+@font-face
+  font-family: Avenir
+  font-weight: 900
+  src: url('./fonts/AvenirLTStd-Black.otf')
+
+.header
+  &__title
+    font-family: Avenir
+    font-style: normal
+    font-weight: 900
+    font-size: 48px
+    line-height: 66px
+    color: #2E282C
+
+.filter-list
+  display: flex
+
+.filter-item
+  display: flex
+  align-items: center
+  margin-right: 20px
+  &__title
+    font-family: Avenir
+    font-style: normal
+    font-weight: 500
+    font-size: 24px
+    color: #2E282C
+    margin-right: 20px
+
+.item-selector
+  display: flex
+  position: absolute
+  min-width: 150px
+  max-width: 250px
+  align-items: center
+  height: 50px
+  border: 1px solid #444444
+  box-sizing: border-box
+  border-radius: 6px
+  position: relative
+  &__title
+    font-family: Avenir
+    font-style: normal
+    font-weight: 500
+    font-size: 24px
+    color: #2E282C
+    margin: 0 22px 0 22px
+    min-width: 130px
+    max-width: 230px
+    overflow: hidden
+    white-space: nowrap
+  &__arrow
+    position: relative
+    right: 0
+    width: 28px
+    cursor: pointer
+    height: 100%
+    display: flex
+    align-items: center
+  &__list
+    position: absolute
+    top: 50px
+    width: 100%
+    &_disable
+      display: none
+    &_active
+      display:
+      display: flex
+      flex-direction: column
+  &__item
+    height: 40px
+    margin-top: 2px
+    display: flex
+    align-items: center
+    cursor: pointer
+    background: #f3f3f3
+    border-radius: 5px
+    font-family: Avenir
+    font-style: normal
+    font-weight: 500
+    &-text
+      margin-left: 22px
+    &:hover
+      background: #e7e7e7
