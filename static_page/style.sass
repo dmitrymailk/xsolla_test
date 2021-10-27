@@ -1,12 +1,10 @@
-html, body, #app
+html, body
   height: 100%
   width: 100%
   max-height: 100%
   max-width: 100%
   margin: 0
   padding: 0
-  display: flex
-  flex-direction: column
 
 @font-face
   font-family: Avenir
@@ -16,6 +14,23 @@ html, body, #app
   font-weight: 900
   src: url('./fonts/AvenirLTStd-Black.otf')
 
+body
+  background: #F0F3FF
+
+#app
+  display: flex
+  flex-direction: column
+  margin: 80px auto 80px auto
+  width: 1440px
+  height: 1218px
+  background: #FFFFFF
+  box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.12)
+  border-radius: 16px
+
+.container
+  margin: 100px 0 80px 100px
+  width: 1240px
+
 .header
   &__title
     font-family: Avenir
@@ -24,9 +39,11 @@ html, body, #app
     font-size: 48px
     line-height: 66px
     color: #2E282C
+    margin: 0
 
 .filter-list
   display: flex
+  margin-top: 40px
 
 .filter-item
   display: flex
@@ -74,14 +91,21 @@ html, body, #app
     position: absolute
     top: 50px
     width: 100%
+    z-index: 2
+    overflow-y: scroll
+    background: rgba(1, 1, 1, 0.2)
+    max-height: 300px
+    border-radius: 0 0 6px 6px
+    display: none
     &_disable
       display: none
     &_active
-      display:
       display: flex
       flex-direction: column
   &__item
     height: 40px
+    min-height: 40px
+
     margin-top: 2px
     display: flex
     align-items: center
@@ -95,3 +119,176 @@ html, body, #app
       margin-left: 22px
     &:hover
       background: #e7e7e7
+
+.event-card
+  &-list
+    margin-top: 42px
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-template-rows: 400px 400px
+    row-gap: 40px
+    column-gap: 40px
+  &-item
+    width: 100%
+    height: 100%
+    position: relative
+    display: grid
+    grid-template-rows: 40px 80px auto 95px
+    grid-template-columns: 40px 80px auto 15px 40px
+    &__image
+      height: 100%
+      width: 100%
+      position: absolute
+      // z-index: -2
+      img
+        height: 100%
+        width: 100%
+    &__overlay
+      background: rgba(0, 0, 0, 0.2)
+      position: absolute
+      // z-index: -1
+      width: 100%
+      height: 100%
+    &__date
+      width: 80px
+      height: 80px
+      border: 2px solid #FFFFFF
+      box-sizing: border-box
+      border-radius: 6px
+      display: flex
+      align-items: center
+      justify-content: center
+      font-family: Avenir
+      font-weight: normal
+      font-size: 48px
+      color: #FFFFFF
+      // z-index: 2
+      position: relative
+      grid-column: 2
+      grid-row: 2
+    &__title
+      font-family: Avenir
+      font-style: normal
+      font-weight: 900
+      color: #FFFFFF
+      position: relative
+      font-size: 48px
+      grid-column: 2 / 4
+      grid-row: 4
+      margin: 0
+      line-height: 0.8
+    &__bookmark
+      position: relative
+      grid-column: 4
+      grid-row: 2
+      cursor: pointer
+
+@media ( max-width: 1480px)
+  #app
+    width: 100%
+    height: auto
+    margin-top: 0
+    border-radius: 0
+
+  .container
+    margin: 40px auto 60px
+
+@media ( max-width: 1290px)
+  .container
+    width: 960px
+
+  .header
+    &__title
+      font-size: 42px
+
+  .event-card
+    &-list
+      margin-top: 20px
+      grid-template-columns: 1fr 1fr
+      grid-template-rows: 300px 300px
+      row-gap: 20px
+      column-gap: 20px
+    &-item
+      grid-template-rows: 20px 60px auto 95px
+      grid-template-columns: 20px 60px auto 15px 20px
+      &__date
+        width: 60px
+        height: 60px
+        font-size: 32px
+      &__title
+        font-size: 36px
+
+@media ( max-width: 1080px)
+  .container
+    width: 768px
+
+  .filter-list
+    display: flex
+    margin-top: 10px
+
+  .header
+    &__title
+      font-size: 32px
+
+  .event-card
+    &-list
+      margin-top: 20px
+      grid-template-columns: 1fr 1fr
+      grid-template-rows: 200px 200px
+      row-gap: 10px
+      column-gap: 10px
+    &-item
+      grid-template-rows: 20px 40px auto 55px
+      grid-template-columns: 20px 40px auto 15px 20px
+      &__date
+        width: 40px
+        height: 40px
+        font-size: 20px
+      &__title
+        font-size: 32px
+
+  .item-selector
+    height: 40px
+    &__title
+      font-size: 22px
+      color: #2E282C
+      margin: 0 22px 0 22px
+    &__list
+      position: absolute
+      top: 40px
+  .filter-item
+
+    &__title
+      font-size: 22px
+
+@media ( max-width:  778px)
+  .container
+    width: 576px
+  .event-card
+    &-list
+      margin-top: 10px
+      grid-template-columns: 1fr 1fr
+      grid-template-rows: 150px 150px
+      row-gap: 10px
+      column-gap: 10px
+    &-item
+      grid-template-rows: 10px 40px auto 45px
+      grid-template-columns: 10px 40px auto 15px 10px
+      &__date
+        width: 40px
+        height: 40px
+        font-size: 20px
+      &__title
+        font-size: 26px
+
+  .item-selector
+    height: 32px
+    &__title
+      font-size: 18px
+      color: #2E282C
+      margin: 0 22px 0 22px
+    &__list
+      top: 32px
+  .filter-item
+    &__title
+      font-size: 18px
