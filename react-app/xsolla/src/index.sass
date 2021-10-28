@@ -20,16 +20,18 @@ body
 #app
   display: flex
   flex-direction: column
-  margin: 80px auto 80px auto
+  margin: 80px auto 0 auto
   width: 1440px
-  height: 1218px
+  // height: 1218px
   background: #FFFFFF
   box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.12)
   border-radius: 16px
+  // padding-bottom: 80px
 
 .container
-  margin: 100px 0 0 100px
+  margin: 100px 0 80px 100px
   width: 1240px
+  // padding-bottom: 40px
 
 .header
   &__title
@@ -125,7 +127,7 @@ body
     margin-top: 42px
     display: grid
     grid-template-columns: 1fr 1fr
-    grid-template-rows: 400px 400px
+    grid-auto-rows: 400px
     row-gap: 40px
     column-gap: 40px
   &-item
@@ -135,6 +137,8 @@ body
     display: grid
     grid-template-rows: 40px 80px auto 95px
     grid-template-columns: 40px 80px auto 15px 40px
+    overflow: hidden
+    border-radius: 6px
     &__image
       height: 100%
       width: 100%
@@ -205,7 +209,7 @@ body
     &-list
       margin-top: 20px
       grid-template-columns: 1fr 1fr
-      grid-template-rows: 300px 300px
+      grid-auto-rows: 300px
       row-gap: 20px
       column-gap: 20px
     &-item
@@ -234,7 +238,7 @@ body
     &-list
       margin-top: 20px
       grid-template-columns: 1fr 1fr
-      grid-template-rows: 200px 200px
+      grid-auto-rows: 200px
       row-gap: 10px
       column-gap: 10px
     &-item
@@ -268,7 +272,7 @@ body
     &-list
       margin-top: 10px
       grid-template-columns: 1fr 1fr
-      grid-template-rows: 150px 150px
+      grid-auto-rows: 150px
       row-gap: 10px
       column-gap: 10px
     &-item
