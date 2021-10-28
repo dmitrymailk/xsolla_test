@@ -11,9 +11,11 @@ export default class App extends Component {
     super();
 
     this.state = {
-      filterListCity: [],
-      filterListMonth: [],
+      filterListCity: ["All"],
+      filterListMonth: ["All"],
       musicEvents: [],
+      filteredMusicEvents: [],
+      filterParams: { city: "All", month: "All" },
     };
   }
 
@@ -28,15 +30,18 @@ export default class App extends Component {
 
   async getEvents() {
     const fetchedEvents = await this.fetchEvents();
-    this.setState({ musicEvents: fetchedEvents });
+    this.setState({
+      musicEvents: fetchedEvents,
+      filteredMusicEvents: fetchedEvents,
+    });
   }
 
   async componentDidMount() {
     await this.getEvents();
-    this.processEvents();
+    await this.processEvents();
   }
 
-  processEvents() {
+  async processEvents() {
     let mounths = {};
     let cities = {};
     moment.locale("en");
@@ -52,16 +57,53 @@ export default class App extends Component {
 
     let monthsNames = Object.keys(mounths);
     let citiesNames = Object.keys(cities);
+
     this.setState({
-      filterListCity: citiesNames,
-      filterListMonth: monthsNames,
+      filterListCity: ["All", ...citiesNames],
+      filterListMonth: ["All", ...monthsNames],
     });
+  }
+
+  // first filter state
+  updateCityFilter(selectedCity) {
+    let filterParams = this.state.filterParams;
+    this.setState({ filterParams: { ...filterParams, city: selectedCity } });
+  }
+  // second filter state
+  updateMonthFilter(selectedDate) {
+    let filterParams = this.state.filterParams;
+    this.setState({ filterParams: { ...filterParams, month: selectedDate } });
+  }
+
+  filterEvents(item) {
+    moment.locale("en");
+    let result = 1;
+    let filterParams = this.state.filterParams;
+
+    result &= Math.max(
+      item.city === filterParams.city,
+      filterParams.city === "All"
+    );
+
+    let date = moment(item.date, "DD.MM.YYYY").format("MMMM");
+    result &= Math.max(
+      date === filterParams.month,
+      filterParams.month === "All"
+    );
+
+    return Boolean(result);
+  }
+
+  getFilteredEvents() {
+    let res = this.state.musicEvents.filter((item) => this.filterEvents(item));
+    // console.log("RES", res);
+    return res;
   }
 
   render() {
     const filterListCity = this.state.filterListCity;
     const filterListMonth = this.state.filterListMonth;
-    const musicEvents = this.state.musicEvents;
+    const filteredMusicEvents = this.getFilteredEvents();
 
     return (
       <>
@@ -70,11 +112,19 @@ export default class App extends Component {
             <h1 className="header__title">Event Listing</h1>
           </header>
           <div className="filter-list">
-            <FilterItem title="City" filterList={filterListCity} />
-            <FilterItem title="Month" filterList={filterListMonth} />
+            <FilterItem
+              title="City"
+              filterList={filterListCity}
+              updateFilter={this.updateCityFilter.bind(this)}
+            />
+            <FilterItem
+              title="Month"
+              filterList={filterListMonth}
+              updateFilter={this.updateMonthFilter.bind(this)}
+            />
           </div>
           <div className="event-card-list">
-            {musicEvents.map((item, i) => (
+            {filteredMusicEvents.map((item, i) => (
               <EventCardItem
                 key={i}
                 city={item.city}
