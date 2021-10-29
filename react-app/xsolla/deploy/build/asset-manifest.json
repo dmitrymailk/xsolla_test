@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.2520e42f.chunk.css",
-    "main.js": "/static/js/main.0c16ef33.chunk.js",
-    "main.js.map": "/static/js/main.0c16ef33.chunk.js.map",
+    "main.css": "/static/css/main.341f629e.chunk.css",
+    "main.js": "/static/js/main.6499e08f.chunk.js",
+    "main.js.map": "/static/js/main.6499e08f.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.8c16f4b4.js",
     "runtime-main.js.map": "/static/js/runtime-main.8c16f4b4.js.map",
     "static/js/2.1bb1ed2e.chunk.js": "/static/js/2.1bb1ed2e.chunk.js",
     "static/js/2.1bb1ed2e.chunk.js.map": "/static/js/2.1bb1ed2e.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.2520e42f.chunk.css.map": "/static/css/main.2520e42f.chunk.css.map",
+    "static/css/main.341f629e.chunk.css.map": "/static/css/main.341f629e.chunk.css.map",
     "static/js/2.1bb1ed2e.chunk.js.LICENSE.txt": "/static/js/2.1bb1ed2e.chunk.js.LICENSE.txt",
     "static/media/index.sass": "/static/media/AvenirLTStd-Roman.0bfb049d.otf",
     "static/media/arrow.c381148f.svg": "/static/media/arrow.c381148f.svg",
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.8c16f4b4.js",
     "static/js/2.1bb1ed2e.chunk.js",
-    "static/css/main.2520e42f.chunk.css",
-    "static/js/main.0c16ef33.chunk.js"
+    "static/css/main.341f629e.chunk.css",
+    "static/js/main.6499e08f.chunk.js"
   ]
 }
