@@ -100,6 +100,7 @@ export default class App extends Component {
     return Boolean(result);
   }
 
+  // TODO: memoization
   getFilteredEvents() {
     let res = this.state.musicEvents.filter((item) => this.filterEvents(item));
     return res;
