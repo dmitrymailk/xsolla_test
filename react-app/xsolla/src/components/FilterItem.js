@@ -47,15 +47,12 @@ export default class FilterItem extends Component {
     return (
       <div className="filter-item">
         <span className="filter-item__title">{title}:</span>
-        <div className="item-selector">
+        <div className="item-selector" onClick={() => this.showItems()}>
           <div className="item-selector__title">{selectedItem}</div>
-          <div
-            className="item-selector__arrow"
-            onClick={() => this.showItems()}
-          >
+          <div className="item-selector__arrow">
             <img src={arrow} alt="" />
           </div>
-          <div className={selectorListClassName}>
+          <ul className={selectorListClassName}>
             {filterList.map((item, index) => (
               <ItemSelectorItem
                 key={index}
@@ -63,7 +60,7 @@ export default class FilterItem extends Component {
                 onClickEvent={this.selectFilterItem.bind(this)}
               />
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     );

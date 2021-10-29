@@ -113,9 +113,9 @@ export default class App extends Component {
     return (
       <>
         <div className="container">
-          <header className="header">
+          <div className="header">
             <h1 className="header__title">Event Listing</h1>
-          </header>
+          </div>
           <div className="filter-list">
             <FilterItem
               title="City"
