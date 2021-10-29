@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-export default class Favorites extends Component {
+class Favorites extends Component {
   constructor() {
     super();
     this.state = {
@@ -27,3 +28,9 @@ export default class Favorites extends Component {
     );
   }
 }
+
+Favorites.propTypes = {
+  updateFilter: PropTypes.func,
+};
+
+export default Favorites;

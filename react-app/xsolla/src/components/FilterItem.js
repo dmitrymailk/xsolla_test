@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import arrow from "../img/arrow.svg";
 import ItemSelectorItem from "./ItemSelectorItem";
+import PropTypes from "prop-types";
 
-export default class FilterItem extends Component {
+class FilterItem extends Component {
   constructor(props) {
     super(props);
 
@@ -66,3 +67,11 @@ export default class FilterItem extends Component {
     );
   }
 }
+
+FilterItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  filterList: PropTypes.arrayOf(PropTypes.string),
+  updateFilter: PropTypes.func,
+};
+
+export default FilterItem;

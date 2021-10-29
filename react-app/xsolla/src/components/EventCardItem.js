@@ -70,11 +70,11 @@ class EventCardItem extends Component {
 
 EventCardItem.propTypes = {
   city: PropTypes.string,
-  date: PropTypes.string,
+  date: PropTypes.string.isRequired,
   genre: PropTypes.string,
-  id: PropTypes.string,
-  image: PropTypes.string,
-  name: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default EventCardItem;
