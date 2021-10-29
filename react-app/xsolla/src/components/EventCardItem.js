@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import bookmark_active from "../img/bookmark_active.svg";
+import bookmark_disabled from "../img/bookmark_disabled.svg";
 import moment from "moment";
 import PropTypes from "prop-types";
 
@@ -7,7 +8,37 @@ class EventCardItem extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { id: this.props.id };
+    this.bookmark = React.createRef();
+    this.currentImage = bookmark_disabled;
+  }
+
+  componentDidMount() {
+    let bookmarkState = Boolean(
+      Number(window.localStorage.getItem(this.state.id))
+    );
+    this.setBookmark(bookmarkState);
+  }
+
+  setBookmark(state) {
+    if (state) {
+      window.localStorage.setItem(this.state.id, 1);
+      this.bookmark.current.src = bookmark_active;
+      this.setState({ currentImage: bookmark_active });
+    } else {
+      window.localStorage.setItem(this.state.id, 0);
+      this.bookmark.current.src = bookmark_disabled;
+      this.setState({ currentImage: bookmark_disabled });
+    }
+  }
+
+  addBookmark() {
+    console.log(window.localStorage.getItem(this.state.id));
+    let bookmarkState = !Boolean(
+      Number(window.localStorage.getItem(this.state.id))
+    );
+    this.setBookmark(bookmarkState);
+    // console.log(bookmarkState);
   }
 
   render() {
@@ -26,8 +57,11 @@ class EventCardItem extends Component {
         </div>
         <span className="event-card-item__date">{date}</span>
         <span className="event-card-item__title">{name}</span>
-        <span className="event-card-item__bookmark">
-          <img src={bookmark_active} alt="" />
+        <span
+          className="event-card-item__bookmark"
+          onClick={this.addBookmark.bind(this)}
+        >
+          <img src={this.currentImage} ref={this.bookmark} alt="" />
         </span>
       </div>
     );

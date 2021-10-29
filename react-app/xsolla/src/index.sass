@@ -59,6 +59,27 @@ body
     color: #2E282C
     margin-right: 20px
 
+.favorites
+  display: flex
+  align-items: center
+  &__title
+    font-family: Avenir
+    font-style: normal
+    font-weight: 500
+    font-size: 24px
+    margin-right: 20px
+  &__checkbox
+    cursor: pointer
+    height: 24px
+    width: 24px
+    background: #fff
+    border-radius: 6px
+    border: 1px #444444 solid
+    &_disable
+      background: #fff
+    &_active
+      background: #2E282C
+
 .item-selector
   display: flex
   position: absolute
@@ -296,3 +317,27 @@ body
   .filter-item
     &__title
       font-size: 18px
+
+@media ( max-width:  778px)
+  .filter-list
+    flex-direction: column
+
+  .filter-item
+    margin: 0 0 20px 0
+    &__title
+      margin-right: auto
+
+  .favorites
+    &__title
+      font-size: 18px
+      margin-right: auto
+
+  .item-selector
+    max-width: 400px
+    min-width: 400px
+    &__title
+      min-width: 130px
+      max-width: 330px
+    &__arrow
+      position: absolute
+      right: 0

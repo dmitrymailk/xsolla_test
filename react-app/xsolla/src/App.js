@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import EventCardItem from "./components/EventCardItem";
 import FilterItem from "./components/FilterItem";
 import moment from "moment";
-
+import Favorites from "./components/Favorites";
 import "./index.sass";
 
 export default class App extends Component {
@@ -24,7 +24,6 @@ export default class App extends Component {
       "https://raw.githubusercontent.com/xsolla/xsolla-frontend-school-2021/main/events.json"
     );
     const data = await res.json();
-    console.log(data);
     return data;
   }
 
@@ -53,7 +52,6 @@ export default class App extends Component {
       if (mounths[`${date}`]) mounths[`${date}`].push(item.id);
       else mounths[`${date}`] = [item.id];
     }
-    console.log(mounths, cities);
 
     let monthsNames = Object.keys(mounths);
     let citiesNames = Object.keys(cities);
@@ -74,6 +72,11 @@ export default class App extends Component {
     let filterParams = this.state.filterParams;
     this.setState({ filterParams: { ...filterParams, month: selectedDate } });
   }
+  // 3 filter state
+  updateFavFilter(state) {
+    let filterParams = this.state.filterParams;
+    this.setState({ filterParams: { ...filterParams, favorites: state } });
+  }
 
   filterEvents(item) {
     moment.locale("en");
@@ -91,12 +94,14 @@ export default class App extends Component {
       filterParams.month === "All"
     );
 
+    if (filterParams.favorites)
+      result &= Boolean(Number(window.localStorage.getItem(item.id)));
+
     return Boolean(result);
   }
 
   getFilteredEvents() {
     let res = this.state.musicEvents.filter((item) => this.filterEvents(item));
-    // console.log("RES", res);
     return res;
   }
 
@@ -122,11 +127,13 @@ export default class App extends Component {
               filterList={filterListMonth}
               updateFilter={this.updateMonthFilter.bind(this)}
             />
+            <Favorites updateFilter={this.updateFavFilter.bind(this)} />
           </div>
+
           <div className="event-card-list">
             {filteredMusicEvents.map((item, i) => (
               <EventCardItem
-                key={i}
+                key={item.id}
                 city={item.city}
                 date={item.date}
                 genre={item.genre}
