@@ -8,7 +8,7 @@ html, body
 
 @font-face
   font-family: Avenir
-  src: url('./fonts/AvenirLTStd-Book.otf')
+  src: url('./fonts/AvenirLTStd-Roman.otf')
 @font-face
   font-family: Avenir
   font-weight: 900
@@ -216,7 +216,8 @@ body
     border-radius: 0
 
   .container
-    margin: 40px auto 60px
+    margin: 0 auto
+    margin-top: 40px
 
 @media ( max-width: 1290px)
   .container
@@ -319,6 +320,9 @@ body
       font-size: 18px
 
 @media ( max-width:  778px)
+  .container
+    margin-top: 0px
+
   .filter-list
     flex-direction: column
 
@@ -335,6 +339,25 @@ body
   .item-selector
     max-width: 400px
     min-width: 400px
+    &__title
+      min-width: 130px
+      max-width: 330px
+    &__arrow
+      position: absolute
+      right: 0
+
+@media ( max-width:  594px)
+  .container
+    width: 375px
+
+  .event-card
+    &-list
+      grid-template-columns: 1fr
+      grid-auto-rows: 180px
+
+  .item-selector
+    max-width: 200px
+    min-width: 200px
     &__title
       min-width: 130px
       max-width: 330px
